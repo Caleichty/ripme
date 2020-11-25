@@ -75,7 +75,7 @@ public class BenjaminVingriefRipper extends AbstractHTMLRipper {
     public List<String> getURLsFromPage(Document doc) {
         List<String> result = new ArrayList<String>();
         for (Element el : doc.select("img")) {
-            result.add(el.attr("src"));
+            result.add(el.attr("srcset"));
         }
         return result
     }
