@@ -22,7 +22,7 @@ public class BenjaminVingriefRipper extends AbstractHTMLRipper {
 
     @Override
     public String getHost() {
-        return "BenjaminVingrief";
+        return "benjamin-vingrief";
     }
     @Override
     public String getDomain() {
@@ -31,14 +31,14 @@ public class BenjaminVingriefRipper extends AbstractHTMLRipper {
 
     @Override
     public String getGID(URL url) throws MalformedURLException {
-        Pattern p = Pattern.compile("^https?://[wm.]*benjamin-vingrief\\.com/([a-zA-Z0-9]+).*$");
+        Pattern p = Pattern.compile("^https?://www.benjamin-vingrief.com/([a-zA-Z0-9_\\-]+).*$");
         Matcher m = p.matcher(url.toExternalForm());
         if (m.matches()) {
             // Return the text contained between () in the regex
             return m.group(1);
         }
         throw new MalformedURLException("Expected benjamin-vingrief.com URL format: " +
-                        "benjamin-vingrief.com/albumid - got " + url + "instead");
+                        "benjamin-vingrief.com/index - got " + url + "instead");
     }
 
     @Override
@@ -77,7 +77,7 @@ public class BenjaminVingriefRipper extends AbstractHTMLRipper {
         for (Element el : doc.select("img")) {
             result.add(el.attr("srcset"));
         }
-        return result
+        return result;
     }
     
     @Override
